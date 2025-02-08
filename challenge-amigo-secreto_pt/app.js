@@ -5,7 +5,6 @@
 
 let listaDeNomes = [];
 
-
 // #2. Implementa uma função para agregar amigos
 
 function adicionarNomes () {
@@ -17,12 +16,18 @@ function adicionarNomes () {
     }
     document.querySelector('input').value = '';
 }
-adicionarNomes();
+
+adicionarNomes(); //essa função deve ser adicionada somente após a pessoa clicar no botão "adicionar"
 
 // #3. Implementa uma função para atualizar a lista de amigos
 
 function atualizarListaDeNomes () {
     listaInterface = document.getElementById('ListaDeNomesInterface');
     listaInterface.innerHTML = '';
-    //Continuar
+    for (i = 0; i < listaDeNomes.length; i++) {
+        let nome = listaDeNomes[i];
+        let itemListaInterface = document.createElement('li');
+        itemListaInterface.textContent = nome;
+        listaInterface.appendChild(itemListaInterface);
+    }
 }
