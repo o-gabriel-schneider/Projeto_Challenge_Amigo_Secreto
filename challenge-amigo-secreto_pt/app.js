@@ -5,29 +5,41 @@
 
 let listaDeNomes = [];
 
-// #2. Implementa uma função para agregar amigos
+// #2. Implemente uma função para agregar amigos
 
-function adicionarNomes () {
-    let nome = document.querySelector('input').value;
-    if (nome == '' || nome != String) {
+function adicionarNomes() {
+    let nome = document.querySelector('input').value.trim();
+    if (nome == '') {
         alert('Por favor, insira um nome.');
     } else {
         listaDeNomes.push(nome);
+        atualizarListaDeNomes();
     }
     document.querySelector('input').value = '';
 }
 
-adicionarNomes(); //essa função deve ser adicionada somente após a pessoa clicar no botão "adicionar"
+// #3. Implemente uma função para atualizar a lista de amigos
 
-// #3. Implementa uma função para atualizar a lista de amigos
-
-function atualizarListaDeNomes () {
-    listaInterface = document.getElementById('ListaDeNomesInterface');
+function atualizarListaDeNomes() {
+    listaInterface = document.getElementById('listaDeNomesInterface');
     listaInterface.innerHTML = '';
     for (i = 0; i < listaDeNomes.length; i++) {
         let nome = listaDeNomes[i];
         let itemListaInterface = document.createElement('li');
         itemListaInterface.textContent = nome;
         listaInterface.appendChild(itemListaInterface);
+    }
+}
+
+// #4. Implemente uma função para sortear os amigos
+
+function sortearNome() {
+    if (listaDeNomes.length == 0) {
+        alert('Por favor, adicione nomes a sua lista.');
+    } else {
+        let indiceAleatorio = Math.floor(Math.random() * listaDeNomes.length);
+        let nomeSorteado = listaDeNomes[indiceAleatorio];
+        let resultado = document.getElementById('resultado');
+        resultado.innerHTML = nomeSorteado;
     }
 }
